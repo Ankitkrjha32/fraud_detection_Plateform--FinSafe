@@ -67,149 +67,179 @@ export default function AuthLogin({ isDemo = false }) {
     }
   };
 
-  const defaultValues = {
-    email: 'demo@finsafe.com',
-    password: 'demo123',
-    submit: null
-  };
-
   return (
-    <Box sx={{ 
-      maxWidth: '450px', 
-      margin: '0 auto', 
-      p: 3,
-      backgroundColor: 'background.paper',
-      borderRadius: 2,
-      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
-    }}>
-      <Formik
-        initialValues={defaultValues}  // Use defaultValues instead of conditional values
-        validationSchema={Yup.object().shape({
-          email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-          password: Yup.string().max(255).required('Password is required')
-        })}
-        onSubmit={handleSubmit}
-      >
-        {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
-          <form noValidate onSubmit={handleSubmit}>
-            <Grid container spacing={3}>
-              <Grid item xs={12}>
-                <Box mb={2}>
-                  <Typography variant="h2" align="center" color="primary" gutterBottom>
-                    Welcome Back!
-                  </Typography>
-                  <Typography variant="body1" align="center" color="textSecondary">
-                    Please sign in to continue
-                  </Typography>
-                </Box>
-                <Stack spacing={1}>
-                  <InputLabel htmlFor="email-login">Email Address</InputLabel>
-                  <OutlinedInput
-                    id="email-login"
-                    type="email"
-                    value={values.email}
-                    name="email"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    placeholder="Enter Email Id"
-                    fullWidth
-                    error={Boolean(touched.email && errors.email)}
-                    sx={{ 
-                      '& .MuiOutlinedInput-notchedOutline': {
-                        borderRadius: '12px'
-                      }
-                    }}
-                  />
-                </Stack>
-                {touched.email && errors.email && (
-                  <FormHelperText error id="standard-weight-helper-text-email-login">
-                    {errors.email}
-                  </FormHelperText>
-                )}
-              </Grid>
-              <Grid item xs={12}>
-                <Stack spacing={1}>
-                  <InputLabel htmlFor="password-login">Password</InputLabel>
-                  <OutlinedInput
-                    fullWidth
-                    error={Boolean(touched.password && errors.password)}
-                    id="password-login"
-                    type={showPassword ? 'text' : 'password'}
-                    value={values.password}
-                    name="password"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    endAdornment={
-                      <InputAdornment position="end">
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={handleClickShowPassword}
-                          onMouseDown={handleMouseDownPassword}
-                          edge="end"
-                          color="secondary"
-                        >
-                          {showPassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
-                        </IconButton>
-                      </InputAdornment>
-                    }
-                    placeholder="Enter password"
-                    sx={{ 
-                      '& .MuiOutlinedInput-notchedOutline': {
-                        borderRadius: '12px'
-                      }
-                    }}
-                  />
-                </Stack>
-                {touched.password && errors.password && (
-                  <FormHelperText error id="standard-weight-helper-text-password-login">
-                    {errors.password}
-                  </FormHelperText>
-                )}
-              </Grid>
-
-              <Grid item xs={12} sx={{ mt: -1 }}>
-                <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={checked}
-                        onChange={(event) => setChecked(event.target.checked)}
-                        name="checked"
-                        color="primary"
-                        size="small"
-                      />
-                    }
-                    label={<Typography variant="h6">Keep me sign in</Typography>}
-                  />
-                  <Link variant="h6" component={RouterLink} color="text.primary">
-                    Forgot Password?
-                  </Link>
-                </Stack>
-              </Grid>
-              {errors.submit && (
+    <Box 
+      sx={{ 
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '100vh',
+        padding: 3
+      }}
+    >
+      <Box sx={{ 
+        width: '100%',
+        maxWidth: '450px',
+        backgroundColor: 'background.paper',
+        borderRadius: 2,
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+        p: 3
+      }}>
+        <Formik
+          initialValues={{
+            email: 'demo@finsafe.com', // Remove conditional
+            password: 'demo123', // Remove conditional
+            submit: null
+          }}
+          validationSchema={Yup.object().shape({
+            email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+            password: Yup.string().max(255).required('Password is required')
+          })}
+          onSubmit={handleSubmit}
+        >
+          {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
+            <form noValidate onSubmit={handleSubmit}>
+              <Grid container spacing={3}>
                 <Grid item xs={12}>
-                  <FormHelperText error>{errors.submit}</FormHelperText>
+                  <Box mb={2}>
+                    <Typography variant="h2" align="center" color="primary" gutterBottom>
+                      Welcome Back!
+                    </Typography>
+                    <Typography variant="body1" align="center" color="textSecondary">
+                      Please sign in to continue
+                    </Typography>
+                  </Box>
+                  <Stack spacing={1}>
+                    <InputLabel htmlFor="email-login">Email Address</InputLabel>
+                    <OutlinedInput
+                      id="email-login"
+                      type="email"
+                      value={values.email}
+                      name="email"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      placeholder="Enter Email Id"
+                      fullWidth
+                      error={Boolean(touched.email && errors.email)}
+                      sx={{ 
+                        '& .MuiOutlinedInput-notchedOutline': {
+                          borderRadius: '12px'
+                        }
+                      }}
+                    />
+                  </Stack>
+                  {touched.email && errors.email && (
+                    <FormHelperText error id="standard-weight-helper-text-email-login">
+                      {errors.email}
+                    </FormHelperText>
+                  )}
                 </Grid>
-              )}
-              <Grid item xs={12}>
-                <AnimateButton>
-                  <Button disableElevation disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained" color="primary">
-                    Login
-                  </Button>
-                </AnimateButton>
+                <Grid item xs={12}>
+                  <Stack spacing={1}>
+                    <InputLabel htmlFor="password-login">Password</InputLabel>
+                    <OutlinedInput
+                      fullWidth
+                      error={Boolean(touched.password && errors.password)}
+                      id="password-login"
+                      type={showPassword ? 'text' : 'password'}
+                      value={values.password}
+                      name="password"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                            color="secondary"
+                          >
+                            {showPassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                      placeholder="Enter password"
+                      sx={{ 
+                        '& .MuiOutlinedInput-notchedOutline': {
+                          borderRadius: '12px'
+                        }
+                      }}
+                    />
+                  </Stack>
+                  {touched.password && errors.password && (
+                    <FormHelperText error id="standard-weight-helper-text-password-login">
+                      {errors.password}
+                    </FormHelperText>
+                  )}
+                </Grid>
+
+                <Grid item xs={12} sx={{ mt: -1 }}>
+                  <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2}>
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={checked}
+                          onChange={(event) => setChecked(event.target.checked)}
+                          name="checked"
+                          color="primary"
+                          size="small"
+                        />
+                      }
+                      label={<Typography variant="h6">Keep me sign in</Typography>}
+                    />
+                    <Link variant="h6" component={RouterLink} color="text.primary">
+                      Forgot Password?
+                    </Link>
+                  </Stack>
+                </Grid>
+                {errors.submit && (
+                  <Grid item xs={12}>
+                    <FormHelperText error>{errors.submit}</FormHelperText>
+                  </Grid>
+                )}
+                <Grid item xs={12}>
+                  <AnimateButton>
+                    <Button disableElevation disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained" color="primary">
+                      Login
+                    </Button>
+                  </AnimateButton>
+                </Grid>
+                <Grid item xs={12}>
+                  <Box sx={{ textAlign: 'center', mt: 2 }}>
+                    <Typography variant="body1" color="textSecondary">
+                      Want to go back?{' '}
+                      <Link
+                        component={RouterLink}
+                        to="/"
+                        variant="subtitle1"
+                        sx={{
+                          textDecoration: 'none',
+                          color: 'primary.main',
+                          '&:hover': {
+                            color: 'primary.dark'
+                          }
+                        }}
+                      >
+                        Return to Home Page
+                      </Link>
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item xs={12}>
+                  <Divider>
+                    <Typography variant="caption"> Login with</Typography>
+                  </Divider>
+                </Grid>
+                <Grid item xs={12}>
+                  <FirebaseSocial />
+                </Grid>
               </Grid>
-              <Grid item xs={12}>
-                <Divider>
-                  <Typography variant="caption"> Login with</Typography>
-                </Divider>
-              </Grid>
-              <Grid item xs={12}>
-                <FirebaseSocial />
-              </Grid>
-            </Grid>
-          </form>
-        )}
-      </Formik>
+            </form>
+          )}
+        </Formik>
+      </Box>
     </Box>
   );
 }
