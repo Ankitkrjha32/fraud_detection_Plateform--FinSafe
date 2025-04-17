@@ -14,16 +14,14 @@ export default defineConfig({
     global: 'window'
   },
   resolve: {
-    alias: [
-      {
-        find: /^~(.+)/,
-        replacement: path.join(process.cwd(), 'node_modules/$1')
-      },
-      {
-        find: /^src(.+)/,
-        replacement: path.join(process.cwd(), 'src/$1')
-      }
-    ]
+    alias: {
+      'components': path.resolve(__dirname, './src/components'),
+      'assets': path.resolve(__dirname, './src/assets'),
+      'layouts': path.resolve(__dirname, './src/layouts'),
+      'pages': path.resolve(__dirname, './src/pages'),
+      'utils': path.resolve(__dirname, './src/utils'),
+      'contexts': path.resolve(__dirname, './src/contexts')
+    }
   },
   server: {
     // this ensures that the browser opens upon server start
@@ -39,6 +37,13 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: false
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom', '@mui/material']
+        }
+      }
+    }
   }
 });
