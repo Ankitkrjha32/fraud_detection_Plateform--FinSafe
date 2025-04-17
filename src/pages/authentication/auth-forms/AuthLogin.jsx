@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 // material-ui
 import Button from '@mui/material/Button';
@@ -16,6 +16,7 @@ import InputLabel from '@mui/material/InputLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
 // third party
 import * as Yup from 'yup';
@@ -29,12 +30,18 @@ import EyeOutlined from '@ant-design/icons/EyeOutlined';
 import EyeInvisibleOutlined from '@ant-design/icons/EyeInvisibleOutlined';
 import FirebaseSocial from './FirebaseSocial';
 
+import { validateUser } from 'utils/mockUsers';
+import { useAuth } from 'contexts/AuthContext';  // Add this import
+
 // ============================|| JWT - LOGIN ||============================ //
 
 export default function AuthLogin({ isDemo = false }) {
-  const [checked, setChecked] = React.useState(false);
+  const navigate = useNavigate();
+  const { login } = useAuth();  // Add this line
+  const [error, setError] = useState('');
+  const [checked, setChecked] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
-  const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -43,23 +50,56 @@ export default function AuthLogin({ isDemo = false }) {
     event.preventDefault();
   };
 
+  // Update handleSubmit function
+  const handleSubmit = async (values, { setSubmitting }) => {
+    try {
+      const user = validateUser(values.email, values.password);
+      if (user) {
+        await login(user); // Use the login function from context
+        navigate('/dashboard');
+      } else {
+        setError('Invalid email or password');
+      }
+    } catch (err) {
+      setError('An error occurred during login');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
-    <>
+    <Box sx={{ 
+      maxWidth: '450px', 
+      margin: '0 auto', 
+      p: 3,
+      backgroundColor: 'background.paper',
+      borderRadius: 2,
+      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
+    }}>
       <Formik
         initialValues={{
-          email: '',
-          password: '',
+          email: isDemo ? 'demo@finsafe.com' : '',
+          password: isDemo ? 'demo123' : '',
           submit: null
         }}
         validationSchema={Yup.object().shape({
           email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
           password: Yup.string().max(255).required('Password is required')
         })}
+        onSubmit={handleSubmit}
       >
         {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
           <form noValidate onSubmit={handleSubmit}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
+                <Box mb={2}>
+                  <Typography variant="h2" align="center" color="primary" gutterBottom>
+                    Welcome Back!
+                  </Typography>
+                  <Typography variant="body1" align="center" color="textSecondary">
+                    Please sign in to continue
+                  </Typography>
+                </Box>
                 <Stack spacing={1}>
                   <InputLabel htmlFor="email-login">Email Address</InputLabel>
                   <OutlinedInput
@@ -72,6 +112,11 @@ export default function AuthLogin({ isDemo = false }) {
                     placeholder="Enter email address"
                     fullWidth
                     error={Boolean(touched.email && errors.email)}
+                    sx={{ 
+                      '& .MuiOutlinedInput-notchedOutline': {
+                        borderRadius: '12px'
+                      }
+                    }}
                   />
                 </Stack>
                 {touched.email && errors.email && (
@@ -86,7 +131,7 @@ export default function AuthLogin({ isDemo = false }) {
                   <OutlinedInput
                     fullWidth
                     error={Boolean(touched.password && errors.password)}
-                    id="-password-login"
+                    id="password-login"
                     type={showPassword ? 'text' : 'password'}
                     value={values.password}
                     name="password"
@@ -106,6 +151,11 @@ export default function AuthLogin({ isDemo = false }) {
                       </InputAdornment>
                     }
                     placeholder="Enter password"
+                    sx={{ 
+                      '& .MuiOutlinedInput-notchedOutline': {
+                        borderRadius: '12px'
+                      }
+                    }}
                   />
                 </Stack>
                 {touched.password && errors.password && (
@@ -158,7 +208,7 @@ export default function AuthLogin({ isDemo = false }) {
           </form>
         )}
       </Formik>
-    </>
+    </Box>
   );
 }
 
