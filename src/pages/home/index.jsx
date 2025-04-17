@@ -1,8 +1,9 @@
 import { Box } from '@mui/material';
-import { Hero, Features } from './components';
+import { Hero, Features, Navbar } from './components';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useAuth } from 'contexts/AuthContext';
+
 
 const Home = () => {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ const Home = () => {
       minHeight: '100vh',
       bgcolor: 'background.default'
     }}>
+      <Navbar /> {/* Navbar added here */}
       <Hero />
       <Features />
     </Box>

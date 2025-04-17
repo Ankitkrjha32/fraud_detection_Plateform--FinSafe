@@ -1,48 +1,63 @@
-import { Grid, Typography, Box, Container } from '@mui/material';
+import { Grid, Typography, Box, Container, Paper } from '@mui/material';
 import { SafetyCertificateOutlined, RadarChartOutlined, GlobalOutlined, TeamOutlined } from '@ant-design/icons';
 
 const features = [
   {
-    icon: <SafetyCertificateOutlined style={{ fontSize: '2rem' }} />,
-    title: 'Advanced Risk Detection',
-    description: 'Real-time monitoring and AI-powered analysis to detect potential financial risks'
+    icon: <SafetyCertificateOutlined style={{ fontSize: '3rem', color: '#1976d2' }} />,
+    title: 'Realtime Fraud Detection',
+    description: 'Real-time monitoring and AI-powered analysis to detect potential financial risks.',
   },
   {
-    icon: <RadarChartOutlined style={{ fontSize: '2rem' }} />,
+    icon: <RadarChartOutlined style={{ fontSize: '3rem', color: '#1976d2' }} />,
     title: 'Interactive Analytics',
-    description: 'Comprehensive visualization tools for better understanding of financial patterns'
+    description: 'Comprehensive visualization tools for better understanding of financial patterns.',
   },
   {
-    icon: <GlobalOutlined style={{ fontSize: '2rem' }} />,
+    icon: <GlobalOutlined style={{ fontSize: '3rem', color: '#1976d2' }} />,
     title: 'Global Coverage',
-    description: 'Track and analyze financial transactions across multiple geographical locations'
+    description: 'Track and analyze financial transactions across multiple geographical locations.',
   },
   {
-    icon: <TeamOutlined style={{ fontSize: '2rem' }} />,
+    icon: <TeamOutlined style={{ fontSize: '3rem', color: '#1976d2' }} />,
     title: 'Collaborative Platform',
-    description: 'Team-based approach to risk assessment and management'
-  }
+    description: 'Team-based approach to risk assessment and management.',
+  },
 ];
 
 const Features = () => {
   return (
-    <Box sx={{ py: 8, bgcolor: 'background.default' }}>
+    <Box sx={{ py: 10, bgcolor: 'background.default' }}>
       <Container>
-        <Typography variant="h2" align="center" gutterBottom>
+        <Typography variant="h3" align="center" fontWeight="bold" gutterBottom>
           Key Features
         </Typography>
-        <Grid container spacing={4} sx={{ mt: 4 }}>
+        <Typography variant="subtitle1" align="center" color="text.secondary" sx={{ mb: 6 }}>
+          Empowering your financial safety with cutting-edge tools and insights.
+        </Typography>
+        <Grid container spacing={4}>
           {features.map((feature, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
-              <Box sx={{ textAlign: 'center', p: 3 }}>
-                <Box sx={{ color: 'primary.main', mb: 2 }}>{feature.icon}</Box>
-                <Typography variant="h5" gutterBottom>
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Paper
+                elevation={3}
+                sx={{
+                  p: 4,
+                  textAlign: 'center',
+                  borderRadius: 2,
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                  '&:hover': {
+                    transform: 'translateY(-8px)',
+                    boxShadow: 6,
+                  },
+                }}
+              >
+                <Box sx={{ mb: 3 }}>{feature.icon}</Box>
+                <Typography variant="h6" fontWeight="bold" gutterBottom>
                   {feature.title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   {feature.description}
                 </Typography>
-              </Box>
+              </Paper>
             </Grid>
           ))}
         </Grid>
