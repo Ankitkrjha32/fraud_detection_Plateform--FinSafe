@@ -7,6 +7,7 @@ import ThemeCustomization from 'themes';
 
 import ScrollTop from 'components/ScrollTop';
 import { AuthProvider } from './contexts/AuthContext';
+import ChatButton from 'components/ChatButton';
 
 // ==============================|| APP - THEME, ROUTER, LOCAL ||============================== //
 
@@ -16,6 +17,7 @@ export default function App() {
       <ThemeCustomization>
         <ScrollTop>
           <RouterProvider router={router} />
+          <ChatButton />
         </ScrollTop>
       </ThemeCustomization>
     </AuthProvider>

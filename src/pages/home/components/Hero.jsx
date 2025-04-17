@@ -117,7 +117,7 @@ const Hero = () => {
               >
                 <Button
                   component={RouterLink}
-                  to="/auth/signup"
+                  to="/auth/login"
                   variant="contained"
                   size="large"
                   sx={{ bgcolor: '#1976d2', color: 'white', '&:hover': { bgcolor: '#1565c0' } }}
