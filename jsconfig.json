@@ -2,8 +2,23 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "commonjs",
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "paths": {
+      "components/*": ["./components/*"],
+      "pages/*": ["./pages/*"],
+      "assets/*": ["./assets/*"],
+      "api/*": ["./api/*"],
+      "routes/*": ["./routes/*"],
+      "themes/*": ["./themes/*"],
+      "layout/*": ["./layout/*"],
+      "contexts/*": ["./contexts/*"],
+      "utils/*": ["./utils/*"],
+      "menu-items/*": ["./menu-items/*"],
+      "menu-items": ["./menu-items"],
+      "config/*": ["./config/*"],
+      "config": ["./config"]
+    }
   },
-  "include": ["src/**/*"],
+  "include": ["src"],
   "exclude": ["node_modules"]
 }

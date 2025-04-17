@@ -1,14 +1,24 @@
 import { Suspense } from 'react';
+import { CircularProgress, Box } from '@mui/material';
 
-// project import
-import Loader from './Loader';
-
-// ==============================|| LOADABLE - LAZY LOADING ||============================== //
-
-const Loadable = (Component) => (props) => (
-  <Suspense fallback={<Loader />}>
-    <Component {...props} />
-  </Suspense>
-);
+const Loadable = (Component) => (props) =>
+  (
+    <Suspense
+      fallback={
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100vh'
+          }}
+        >
+          <CircularProgress />
+        </Box>
+      }
+    >
+      <Component {...props} />
+    </Suspense>
+  );
 
 export default Loadable;

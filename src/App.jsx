@@ -2,7 +2,7 @@ import { RouterProvider } from 'react-router-dom';
 import 'leaflet/dist/leaflet.css';
 
 // project import
-import router from 'routes';
+import router from './routes';  // Update this line
 import ThemeCustomization from 'themes';
 
 import ScrollTop from 'components/ScrollTop';

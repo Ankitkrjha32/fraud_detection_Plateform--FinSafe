@@ -15,6 +15,7 @@ import {
 import { NumericFormat } from "react-number-format";
 import Dot from "components/@extended/Dot";
 import transactions from "../../assets/data/transactions";
+import { v4 as uuidv4 } from 'uuid';
 
 // Import the modal component
 import TransactionModal from "./TransactionModal";
@@ -24,8 +25,9 @@ function createData(tracking_no, name, risk_score, status, total_amount, locatio
   return { tracking_no, name, risk_score, status, total_amount, locationStr, location };
 }
 
-const rows = transactions.transactions.map((transaction) =>
-  createData(
+const rows = transactions.transactions.map((transaction) => ({
+  id: uuidv4(), // Add unique id
+  ...createData(
     transaction.tracking_no,
     transaction.name,
     transaction.risk_score,
@@ -34,7 +36,7 @@ const rows = transactions.transactions.map((transaction) =>
     `${transaction.location.city}, ${transaction.location.country}`,
     transaction.location
   )
-);
+}));
 
 const headCells = [
   { id: "tracking_no", align: "left", label: "Transaction No." },
@@ -106,7 +108,7 @@ export default function OrderTable() {
             {rows.map((row) => (
               <TableRow
                 hover
-                key={row.tracking_no}
+                key={row.id} // Use the unique id as key
                 onClick={() => handleRowClick(row)}
                 sx={{ cursor: "pointer" }}
               >
