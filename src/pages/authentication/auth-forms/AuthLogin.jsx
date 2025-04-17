@@ -67,6 +67,12 @@ export default function AuthLogin({ isDemo = false }) {
     }
   };
 
+  const defaultValues = {
+    email: 'demo@finsafe.com',
+    password: 'demo123',
+    submit: null
+  };
+
   return (
     <Box sx={{ 
       maxWidth: '450px', 
@@ -77,11 +83,7 @@ export default function AuthLogin({ isDemo = false }) {
       boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
     }}>
       <Formik
-        initialValues={{
-          email: isDemo ? 'demo@finsafe.com' : '',
-          password: isDemo ? 'demo123' : '',
-          submit: null
-        }}
+        initialValues={defaultValues}  // Use defaultValues instead of conditional values
         validationSchema={Yup.object().shape({
           email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
           password: Yup.string().max(255).required('Password is required')
@@ -109,7 +111,7 @@ export default function AuthLogin({ isDemo = false }) {
                     name="email"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    placeholder="Enter email address"
+                    placeholder="Enter Email Id"
                     fullWidth
                     error={Boolean(touched.email && errors.email)}
                     sx={{ 
