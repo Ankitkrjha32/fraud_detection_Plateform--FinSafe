@@ -15,7 +15,7 @@ const Navbar = () => {
               display: 'flex',
               alignItems: 'center',
               textDecoration: 'none',
-              color: '#1976d2'
+              color: '#1976d2',
             }}
           >
             <Box
@@ -24,22 +24,32 @@ const Navbar = () => {
               alt="FinSafe Logo"
               sx={{
                 height: 50,
-                mr: 1
+                mr: 1,
               }}
             />
-            <Typography variant="h5" fontWeight="bold">
-              
-            </Typography>
+            <Typography variant="h5" fontWeight="bold"></Typography>
           </Box>
 
           {/* Navigation Buttons */}
           <Stack direction="row" spacing={2}>
-            <Button component={RouterLink} to="/" color="inherit">
+            {/* Home Button */}
+            <Button
+              component="a"
+              href="https://fin-safe-eight.vercel.app/"
+              color="inherit"
+            >
               Home
             </Button>
-            <Button component={RouterLink} to="/features" color="inherit">
+
+            {/* Features Button */}
+            <Button
+              component="a"
+              href="#features"
+              color="inherit"
+            >
               Features
             </Button>
+
             <Button component={RouterLink} to="/about" color="inherit">
               About
             </Button>
@@ -50,7 +60,7 @@ const Navbar = () => {
               sx={{
                 bgcolor: '#1976d2',
                 color: 'white',
-                '&:hover': { bgcolor: '#1565c0' }
+                '&:hover': { bgcolor: '#1565c0' },
               }}
             >
               Sign Up

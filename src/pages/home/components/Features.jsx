@@ -1,5 +1,5 @@
 import { Grid, Typography, Box, Container, Paper } from '@mui/material';
-import { SafetyCertificateOutlined, RadarChartOutlined, GlobalOutlined, TeamOutlined } from '@ant-design/icons';
+import { SafetyCertificateOutlined, RadarChartOutlined, GlobalOutlined, TeamOutlined, ApiOutlined, DollarCircleOutlined } from '@ant-design/icons';
 
 const features = [
   {
@@ -21,6 +21,16 @@ const features = [
     icon: <TeamOutlined style={{ fontSize: '3rem', color: '#1976d2' }} />,
     title: 'Collaborative Platform',
     description: 'Team-based approach to risk assessment and management.',
+  },
+  {
+    icon: <DollarCircleOutlined style={{ fontSize: '3rem', color: '#1976d2' }} />,
+    title: 'Decentralized Finance (DeFi)',
+    description: 'Explore and manage decentralized financial ecosystems with secure and transparent tools.',
+  },
+  {
+    icon: <ApiOutlined style={{ fontSize: '3rem', color: '#1976d2' }} />,
+    title: 'GNN-Based Fraud Detection API',
+    description: 'Leverage Graph Neural Networks for real-time fraud detection, surpassing traditional rule-based techniques.',
   },
 ];
 
