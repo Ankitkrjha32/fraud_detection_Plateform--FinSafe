@@ -5,8 +5,9 @@ import Slider from 'react-slick'; // Import react-slick
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import image1 from '../../../assets/images/DashBoard.png'; // Replace with your image paths
-import image2 from '../../../assets/images/DashBoard.png';
-import image3 from '../../../assets/images/DashBoard.png';
+import image2 from '../../../assets/images/DashBoard123.png';
+import image3 from '../../../assets/images/Defi.png';
+import image4 from '../../../assets/images/Pay.jpg';
 
 // Custom Arrow Components
 const CustomArrow = ({ className, style, onClick, direction }) => (
@@ -26,7 +27,7 @@ const CustomArrow = ({ className, style, onClick, direction }) => (
       borderRadius: '50%',
       width: 40,
       height: 40,
-      ...(direction === 'left' ? { left: -25 } : { right: 0 }),
+      ...(direction === 'left' ? { left: -25 } : { right: -29 }),
     }}
   >
     {direction === 'left' ? '<' : '>'}
@@ -146,7 +147,7 @@ const Hero = () => {
                 alt="Slide 1"
                 sx={{
                   width: '100%',
-                  maxWidth: 500,
+                  maxWidth: 700,
                   mx: 'auto',
                   display: 'block',
                   boxShadow: 3,
@@ -159,7 +160,7 @@ const Hero = () => {
                 alt="Slide 2"
                 sx={{
                   width: '100%',
-                  maxWidth: 500,
+                  maxWidth: 700,
                   mx: 'auto',
                   display: 'block',
                   boxShadow: 3,
@@ -172,7 +173,20 @@ const Hero = () => {
                 alt="Slide 3"
                 sx={{
                   width: '100%',
-                  maxWidth: 500,
+                  maxWidth: 700,
+                  mx: 'auto',
+                  display: 'block',
+                  boxShadow: 3,
+                  borderRadius: 2,
+                }}
+              />
+               <Box
+                component="img"
+                src={image4}
+                alt="Slide 4"
+                sx={{
+                  width: '100%',
+                  maxWidth: 700,
                   mx: 'auto',
                   display: 'block',
                   boxShadow: 3,
