@@ -15,7 +15,7 @@ const DashboardDefault = Loadable(lazy(() => import('pages/dashboard/index')));
 const Home = Loadable(lazy(() => import('pages/home')));
 const AuthLogin = Loadable(lazy(() => import('pages/authentication/auth-forms/AuthLogin')));
 const AuthRegister = Loadable(lazy(() => import('pages/authentication/auth-forms/AuthRegister')));
-const ChatbotPage = Loadable(lazy(() => import('pages/chatbot')));
+const ChatbotPage = Loadable(lazy(() => import('pages/chatbot/ChatbotPage')));
 
 // render - sample page
 const SamplePage = Loadable(lazy(() => import('pages/extra-pages/sample-page')));
@@ -56,12 +56,7 @@ const MainRoutes = {
           element: <DashboardDefault />
         }
       ]
-    },
-    {
-      path: 'chatbot',
-      element: <ChatbotPage />,
-      errorElement: <ErrorBoundary />
-    }
+    } 
   ]
 };
 

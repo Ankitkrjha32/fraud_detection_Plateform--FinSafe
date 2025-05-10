@@ -162,13 +162,13 @@ export default function ChatbotContent({ isModal = false }) {
     setLoading(true);
 
     try {
-      const prompt = context + "\n\nUser Question: " + userMessage;
-      const response = await ai.models.generateContent({
-        model: "gemini-2.0-flash",
-        contents: prompt,
-      });
+      const model = ai.getGenerativeModel({ model: "gemini-pro" });
+      const prompt = `You are a financial security expert. ${userMessage}`;
+      
+      const result = await model.generateContent(prompt);
+      const response = await result.response;
+      const botMessage = response.text();
 
-      const botMessage = response.text;
       setMessages(prev => [...prev, { text: botMessage, sender: 'bot' }]);
     } catch (error) {
       console.error('Error:', error);
@@ -190,18 +190,29 @@ export default function ChatbotContent({ isModal = false }) {
 
   return (
     <Box sx={{ 
-      height: isModal ? '100%' : '70vh',
+      height: '100%',
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      bgcolor: 'background.default',
+      borderRadius: 1
     }}>
       <Box
         ref={chatContainerRef}
         sx={{
           flex: 1,
           overflowY: 'auto',
-          p: 2,
-          backgroundColor: 'background.default',
-          borderRadius: 1
+          p: 3,
+          '&::-webkit-scrollbar': {
+            width: '8px',
+            borderRadius: '8px'
+          },
+          '&::-webkit-scrollbar-track': {
+            background: 'transparent'
+          },
+          '&::-webkit-scrollbar-thumb': {
+            background: 'rgba(0,0,0,0.1)',
+            borderRadius: '8px'
+          }
         }}
       >
         {messages.map((message, index) => (
@@ -269,7 +280,12 @@ export default function ChatbotContent({ isModal = false }) {
           </Box>
         )}
       </Box>
-      <Box sx={{ mt: 2, display: 'flex', gap: 1 }}>
+      <Box sx={{ 
+        p: 2, 
+        borderTop: '1px solid',
+        borderColor: 'divider',
+        bgcolor: 'background.paper'
+      }}>
         <TextField
           fullWidth
           multiline
@@ -279,14 +295,27 @@ export default function ChatbotContent({ isModal = false }) {
           onKeyPress={handleKeyPress}
           placeholder="Ask about financial security..."
           variant="outlined"
+          sx={{
+            '& .MuiOutlinedInput-root': {
+              borderRadius: '12px'
+            }
+          }}
         />
         <IconButton
           color="primary"
           onClick={handleSend}
           disabled={loading || !input.trim()}
-          sx={{ p: '10px' }}
+          sx={{
+            position: 'absolute',
+            right: '24px',
+            bottom: '24px',
+            bgcolor: 'primary.light',
+            '&:hover': {
+              bgcolor: 'primary.main'
+            }
+          }}
         >
-          <SendOutlined />
+          <SendOutlined style={{ color: 'white' }} />
         </IconButton>
       </Box>
     </Box>

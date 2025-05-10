@@ -5,7 +5,7 @@ import {
   IconButton,
 } from '@mui/material';
 import { CloseOutlined } from '@ant-design/icons';
-import ChatbotContent from 'pages/chatbot';
+import ChatbotContent from 'pages/component-overview';
 
 export default function ChatbotModal({ open, onClose }) {
   return (
