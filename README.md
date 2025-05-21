@@ -1,36 +1,99 @@
+🛡️ FinSafe: AI-Powered Fraud Detection for Fintech
 Presented by FinRiders
-Role: Product Lead / Developer / Data Scientist (choose based on your actual contribution)
-Tools & Technologies: Python, Graph Neural Networks (GNN), Machine Learning, REST APIs, Chrome Extensions, SaaS, Fraud Analytics
+Role: Product Lead / Developer / Data Scientist (update as per your role)
 
-Description:
+💡 "Unmasking Fraud, Securing Trust."
 
-Spearheaded the development of FinSafe, an AI-powered fraud detection platform built for the fintech ecosystem, combining Machine Learning and Graph Neural Networks (GNN) to detect and prevent complex fraud patterns in real-time.
+🔍 Overview
+FinSafe is a scalable, AI-powered fraud detection platform designed for the modern fintech ecosystem. It leverages Graph Neural Networks (GNNs) and Machine Learning (ML) to detect fraud loops, mule accounts, terrorist funding, and complex transactional anomalies in real-time.
 
-Designed and deployed a REST API service for fintech companies, enabling seamless integration of fraud detection capabilities into existing transaction systems using a B2B SaaS model.
+🚀 Features
+✅ Plug-and-Play REST API for seamless integration into fintech systems
 
-Built a Chrome Extension targeting end-users to flag suspicious websites and prevent scams, implementing a freemium model for accessibility and scalability.
+🧠 Graph Neural Network-based fraud ring detection
 
-Introduced Fraud Density Mapping to visualize high-risk areas, assisting financial institutions and law enforcement in proactive fraud prevention.
+📍 Fraud Density Mapping to locate and predict high-risk zones
 
-Developed a multi-layered detection system leveraging:
+🧩 Multi-layered AI System using ML, GNN, and analytics
 
-ML algorithms to identify anomalous transaction patterns
+🔒 Chrome Extension to warn users of scams and phishing attempts
 
-GNNs to uncover hidden fraud loops and fraudster networks
+🤝 Collaboration with security agencies for region-specific fraud intel
 
-Location-based analytics for fraud hotspot identification
+🧰 Tools & Technologies
+Python, FastAPI, Pandas, Scikit-learn
 
-Collaborated with security agencies to provide region-specific fraud intelligence, promoting cross-institutional fraud prevention strategies.
+Graph Neural Networks (PyTorch Geometric, DGL)
 
-Contributed to the business model strategy, including tiered pricing, freemium extension monetization, and strategic partnerships with banks and cybersecurity firms.
+Chrome Extension (JavaScript)
 
-Envisioned future expansions such as DeFi fraud detection, AI-driven risk scoring dashboards, and cross-border fraud analytics.
+SaaS Architecture, REST APIs
 
-Impact:
+Fraud Analytics, Heatmapping (GeoJSON, Leaflet.js)
 
-Enhanced fraud detection accuracy and reduced false positives by leveraging GNN-based network analysis.
+🧠 How It Works
+ML Engine identifies anomalous patterns in transaction logs
 
-Provided real-time alerts to fintech companies and users, significantly reducing potential financial losses.
+GNN Model uncovers fraudster networks beyond individual accounts
 
-Strengthened ecosystem trust and security in digital finance.
+API flags or scores suspicious transactions in real-time
 
+Chrome Extension scans URLs and flags fraudulent websites
+
+Dashboard visualizes fraud hotspots and risk scores
+
+💼 Business Model
+B2B SaaS: Tiered API subscription
+
+Chrome Extension: Freemium model
+
+Partnerships: Security agencies & banks
+
+🌐 Future Roadmap
+🌍 Cross-Border Fraud Detection
+
+📊 AI-Driven Risk Scoring Dashboards
+
+⛓️ DeFi & Blockchain Fraud Prevention
+
+📈 Impact
+🧩 Detected hidden mule accounts & suspicious fund flows
+
+🔔 Reduced false positives with GNN-enhanced pattern matching
+
+🔐 Strengthened digital trust across fintech platforms
+
+📂 Getting Started
+bash
+Copy
+Edit
+# Clone the repository
+git clone https://github.com/harshit081/FinSafe.git
+
+# Navigate to the directory
+cd FinSafe
+
+# Install dependencies
+npm install
+
+# Start the frontend (Vite)
+npm start
+
+# Or, for Python backend
+cd backend
+pip install -r requirements.txt
+uvicorn main:app --reload
+🤝 Contributing
+Feel free to raise issues, suggest features, or contribute directly via pull requests.
+
+📜 License
+This project is licensed under the MIT License.
+
+⭐ GitHub Command to Open It
+To open the project directory from terminal (if cloned locally):
+
+bash
+Copy
+Edit
+cd path/to/FinSafe
+code .   # Opens the folder in VS Code
