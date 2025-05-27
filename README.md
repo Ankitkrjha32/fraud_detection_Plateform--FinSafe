@@ -1,6 +1,6 @@
 🛡️ FinSafe: AI-Powered Fraud Detection for Fintech
 Presented by FinRiders
-Role: Product Lead / Developer / Data Scientist (update as per your role)
+
 
 💡 "Unmasking Fraud, Securing Trust."
 
@@ -68,7 +68,7 @@ bash
 Copy
 Edit
 # Clone the repository
-git clone https://github.com/harshit081/FinSafe.git
+git clone https://github.com/ankitkrjha32/FinSafe.git
 
 # Navigate to the directory
 cd FinSafe
