@@ -70,7 +70,7 @@ Edit
 # Clone the repository
 git clone https://github.com/ankitkrjha32/FinSafe.git
 
-# Navigate to the directory
+# Navigate to the directory.
 cd FinSafe
 
 # Install dependencies
